@@ -10,9 +10,13 @@ import orderRouter from "./routes/order.routes.js";
 
 const app = express();
 const port = process.env.PORT || 8080;
+const origin = process.env.ORIGIN;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: origin,
+    credentials: true,
+}));
 
 app.get("/", (req, res) => {
     res.send("welcome to edgistify");
